@@ -1,0 +1,103 @@
+[
+    {
+      "key": "key1",
+      "timestamp": 1656134400,
+      "value": "example text content of key 1."
+    },
+    {
+      "key": "key2",
+      "timestamp": 1656138000,
+      "value": "example text content of key 2."
+    },
+    {
+      "key": "key3",
+      "timestamp": 1656220800,
+      "value": "example text content of key 3."
+    },
+    {
+      "key": "key4",
+      "timestamp": 1656224400,
+      "value": "{ \"data1\": \"key4 value1\", \"data2\": 5, \"data3\": true }"
+    },
+    {
+      "key": "key5",
+      "timestamp": 1656307200,
+      "value": "example text content of key 5."
+    },
+    {
+      "key": "key6",
+      "timestamp": 1656310800,
+      "value": "example text content of key 6."
+    },
+    {
+      "key": "key7",
+      "timestamp": 1656397200,
+      "value": "example text content of key 7."
+    },
+    {
+      "key": "key8",
+      "timestamp": 1656393600,
+      "value": "{ \"data1\": \"key8 value1\", \"data2\": 5, \"data3\": true }"
+    },
+    {
+      "key": "key9",
+      "timestamp": 1656480000,
+      "value": "{ \"data1\": \"key 9 value1\", \"data2\": 5, \"data3\": true }"
+    },
+    {
+      "key": "key10",
+      "timestamp": 1656483600,
+      "value": "example text content of key 10."
+    },
+    {
+      "key": "key11",
+      "timestamp": 1656566400,
+      "value": "example text content of key 11."
+    },
+    {
+      "key": "key12",
+      "timestamp": 1656570000,
+      "value": "example text content of key 12."
+    },
+    {
+      "key": "key13",
+      "timestamp": 1656652800, 
+      "value": "{ \"nested_key\": \"nested_value for key 13\", \"array_data\": [1, 2, 3] }"
+    },
+    {
+      "key": "key14",
+      "timestamp": 1656656400, 
+      "value": "{ \"nested_key\": \"nested_value for key 14\", \"array_data\": [1, 2, 3] }"
+    },
+    {
+      "key": "key15",
+      "timestamp": 1656656460, 
+      "value": "{ \"nested_key\": \"nested_value for key 15\", \"array_data\": [1, 2, 3] }"
+    },
+    {
+      "key": "key16",
+      "timestamp": 1656656450, 
+      "value": "{ \"nested_key\": \"nested_value for key 16\", \"array_data\": [1, 2, 3] }"
+    },
+    {
+        "key": "key17",
+        "timestamp": 1656570800,
+        "value": "example text content of key 17."
+    },
+    {
+      "key": "key18",
+      "timestamp": 1656656430, 
+      "value": "{ \"nested_key\": \"nested_value for key 18\", \"array_data\": [1, 2, 3] }"
+    },
+    {
+        "key": "key19",
+        "timestamp": 1656570811,
+        "value": "example text content of key 19."
+    },
+    {
+        "key": "key20",
+        "timestamp": 1656570800,
+        "value": "example text content of key 20."
+    }
+]
+  

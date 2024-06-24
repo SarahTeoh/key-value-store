@@ -1,6 +1,6 @@
 name: Lint, Static Analysis, Tests
 
-on: push
+on: ["push", "pull_request"]
 
 permissions:
   contents: read

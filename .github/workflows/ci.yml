@@ -3,8 +3,9 @@ name: Lint, Static Analysis, Tests
 on: [push, pull_request]
 
 permissions:
+  contents: read
   pull-requests: write
-  
+
 jobs:
   ci:
     runs-on: ubuntu-latest

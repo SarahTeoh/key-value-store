@@ -13,7 +13,7 @@ class KeyValueFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<\Illuminate\Database\Eloquent\Model>
+     * @var class-string<\BaoPham\DynamoDb\DynamoDbModel>
      */
     protected $model = KeyValue::class;
 

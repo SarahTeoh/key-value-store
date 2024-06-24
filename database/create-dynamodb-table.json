@@ -1,0 +1,17 @@
+{
+    "TableName": "KeyValueStore",
+    "KeySchema": [
+      { "AttributeName": "key", "KeyType": "HASH" },
+      { "AttributeName": "timestamp", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "key", "AttributeType": "S" },
+      { "AttributeName": "timestamp", "AttributeType": "N" }
+    ],
+    "BillingMode": "PROVISIONED",
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 1,
+      "WriteCapacityUnits": 1
+    },
+    "DeletionProtectionEnabled": true
+}

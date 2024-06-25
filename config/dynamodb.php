@@ -23,7 +23,7 @@ return [
     | Most of the connection's config will be fed directly to AwsClient
     | constructor http://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.AwsClient.html#___construct
     */
-
+    'table_name' => env('DYNAMODB_TABLE_NAME'),
     'connections' => [
         'aws' => [
             'credentials' => [
@@ -52,7 +52,7 @@ return [
                 'key' => 'dynamodblocal',
                 'secret' => 'secret',
             ],
-            'region' => 'test',
+            'region' => 'ap-southeast-1',
             'endpoint' => env('DYNAMODB_LOCAL_ENDPOINT'),
             'debug' => true,
         ],

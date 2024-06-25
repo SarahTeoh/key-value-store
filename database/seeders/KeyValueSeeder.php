@@ -14,7 +14,7 @@ class KeyValueSeeder extends Seeder
     public function run(): void
     {
         $initialData = File::json(base_path('database/seeders/data/initial-data.json'));
-        $tableName = env('DYNAMODB_TABLE_NAME');
+        $tableName = config('dynamodb.table_name');
         $putRequests = [];
 
         foreach ($initialData as $item) {

@@ -1,66 +1,197 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+****
+# Version-controlled Key Value Store API
+This is an API that can be used to query a version-controlled key value store. You can try out the API by clicking the "Run in Postman" button below.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/9636334-7890a2b0-48a0-4515-b21e-11c8c4ffb615?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D9636334-7890a2b0-48a0-4515-b21e-11c8c4ffb615%26entityType%3Dcollection%26workspaceId%3D06c6778a-a3f4-4204-a7f0-dd9b9d3c5694)
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### API endpoints
+Base path: http://key-value-store.ap-southeast-1.elasticbeanstalk.com/api/v1
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Http Method</th>
+<th>Function</th>
+<th>Example Parameters</th>
+<th>Example Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="http://key-value-store.ap-southeast-1.elasticbeanstalk.com/api/v1/get_all_records"> /get_all_records </a></td>
+<td>GET</td>
+<td>Returns JSON Array of all records data and their values currently stored in the DB</td>
+<td>
+N/A
+</td>
+<td>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```json
+{
+    "data": [
+        {
+            "key": "key7",
+            "value": "example text content of key 7.",
+            "timestamp": 1656397200
+        },
+        {
+            "key": "key7",
+            "value": "\t example text content of key 7",
+            "timestamp": 1656397211
+        },
+        {
+            "key": "key10",
+            "value": "example text content of key 10.",
+            "timestamp": 1656483600
+        }
+    ]
+}
+```
+</td>
+</tr>
+<tr>
+<td><a href="http://key-value-store.ap-southeast-1.elasticbeanstalk.com/api/v1/object/key1"> /object/{key} </a></td>
+<td>GET</td>
+<td>Return the key's value at a specific time</td>
+<td>
+<code>/object/key7<code>
+<td>
+    
+```json
+{
+    "data": {
+        "key": "key7",
+        "value": "\t example text content of key 7",
+        "timestamp": 1656397211
+    }
+}
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+</td>
+</tr>
+<tr>
+</td>
+</tr>
+<tr>
+<td><a href="http://key-value-store.ap-southeast-1.elasticbeanstalk.com/api/v1/object/key1"> /object/{key} </a></td>
+<td>GET</td>
+<td>Return the key's latest value</td>
+<td>
+<code>/object/key7?timestamp=1656397200<code>
+<td>
 
-## Learning Laravel
+    
+```json
+{
+    "data": {
+        "key": "key7",
+        "value": "\t new example text content of key 7",
+        "timestamp": 1656397200
+    }
+}
+```
+</td>
+</tr>
+<tr>
+<td><a href="http://key-value-store.ap-southeast-1.elasticbeanstalk.com/api/v1/object"> /object </a></td>
+<td>POST</td>
+<td>Store key value pair</td>
+<td>
+request body: <code>{"mykey" : "value1"}<code>
+<td>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    
+```json
+{
+    "data": {
+        "key": "mykey",
+        "value": "value1",
+        "timestamp": 1719344835
+    }
+}
+```
+</td>
+</tr>
+</tbody></table>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Architecture
+the cloud infrastructure resource, DynamoDb are defined and provisioned using AWS Cloudformation. Deployment to Elastic Beanstalk environment has been made using `awsebcli`. This is the architecture used.
+![Architecture diagram](docs/key-value-store.drawio.png "Architecture")
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Data model
+The DynamoDB data model looks like this.
+|                         | Partition Key | Sort Key        |
+|-------------------------|---------------|-----------------|
+| KeyValueStore         | key          | timestamp        |
+    
+ Example
+![Data Model](docs/key-value-store-data-model.png "Data Model")
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+Please note that data model design of the dynamodb table varies depending on the data size and predicted read&write frequency. For example, if the predicted read&frequency rate is not that high, we could create a Global Secondary Index(GSI) that has a constant static key like `"ALL_ITEMS"` as the partition key. By doing so, the query to get all records will become more efficient since dynamodb query perfomance will be very fast if we specify partition key during query. On the other hand, if the read&frequency rate is predicted to be very high, we shall consider partition key sharding. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Coverage report
+https://github.com/SarahTeoh/key-value-store/pull/6#issuecomment-2190340867 
+    
+## Environment setup to run locally
 
-## Contributing
+### Requirements
+You need these on your computer before you can proceed with the setup.
+* PHP >= 8.2 
+* aws cli 
+* dynamodb local
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### To Run locally
+1. Clone this repository
+```
+$ git clone https://github.com/SarahTeoh/key-value-store.git 
+$ cd key-value-store 
+```
 
-## Code of Conduct
+2. Set up configuration
+```
+$ cp .env.example .env
+```
+Open .env file and configure the DYNAMODB_* and AWS_*.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* DYNAMODB_CONNECTION: 'local' or 'test' for local
+* DYNAMODB_LOCAL_ENDPOINT: Your DynamoDB local endpoint with port
+* DYNAMODB_TABLE_NAME: DynamoDB table name you've created.
+* AWS_ACCESS_KEY_ID
+* AWS_SECRET_ACCESS_KEY
+* AWS_DEFAULT_REGION
 
-## Security Vulnerabilities
+3. Install PHP dependencies
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+$ composer install
+```
 
-## License
+4. Generate application key
+```
+$ php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. Create dynamodb table in dynamodb local
+```
+aws dynamodb create-table --cli-input-json file://database/create-dynamodb-table.json --endpoint-url http://localhost:8000 
+```
+Change the endpoint url to your dynamodb local endpoint url.
+    
+6. Check table created
+```
+aws dynamodb list-tables --endpoint-url http://localhost:8000
+```
+
+7. Seed local dynamodb table
+```
+php artisan db:seed --class=KeyValueSeeder
+```
+    
+8. Run the dev server (the output will give the address):
+```
+$ php artisan serve
+```
+    
+That's it! You can use curl or Postman to try the API.

@@ -51,8 +51,8 @@ jobs:
 
       - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
         env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
+          DYNAMODB_CONNECTION: test
+          DYNAMODB_TABLE_NAME: KeyValueStore
         run: php artisan test --coverage-cobertura tests/coverage/coverage.cobertura.xml
       
       - name: Code Coverage Summary Report

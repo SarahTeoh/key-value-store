@@ -10,6 +10,20 @@ class KeyValue extends DynamoDbModel
     use HasFactory;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'KeyValueStore';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'key';
+
+    /**
      * The composite key of the table in form of ['hash_key', 'range_key'].
      *
      * @var array

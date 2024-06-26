@@ -3,7 +3,7 @@ name: Lint, Static Analysis, Tests
 on: ["push", "pull_request"]
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:

@@ -11,3 +11,8 @@ Route::get('/user', function (Request $request) {
 Route::get('get_all_records', [KeyValueController::class, 'index']);
 Route::get('object/{key}', [KeyValueController::class, 'show']);
 Route::post('object', [KeyValueController::class, 'store']);
+
+Route::fallback(function () {
+    return response()->json([
+        'message' => 'Endpoint Not Found. If error persists, contact admin'], 404);
+});

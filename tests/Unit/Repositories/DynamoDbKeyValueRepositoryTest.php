@@ -3,6 +3,7 @@
 use App\Models\KeyValue;
 use App\Repositories\DynamoDbKeyValueRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 

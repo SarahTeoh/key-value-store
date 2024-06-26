@@ -35,3 +35,30 @@ it('can fetch all key-value pairs', function () {
             ],
         ]);
 });
+
+it('can fetch the latest value for a key', function () {
+    $response = $this->get('/api/v1/object/mykey');
+
+    $response->assertStatus(200)
+        ->assertJson([
+            'data' => [
+                'key' => 'mykey',
+                'value' => 'latest_value',
+            ],
+        ]);
+});
+
+it('can fetch the value for a key at a specific timestamp', function () {
+    $timestamp = 1625236523;
+
+    $response = $this->get('/api/v1/object/mykey?timestamp=' . $timestamp);
+
+    $response->assertStatus(200)
+        ->assertJson([
+            'data' => [
+                'key' => 'mykey',
+                'value' => 'value1',
+                'timestamp' => $timestamp,
+            ],
+        ]);
+});

@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('get_all_records', [KeyValueController::class, 'index']);
+Route::get('object/{key}', [KeyValueController::class, 'show']);

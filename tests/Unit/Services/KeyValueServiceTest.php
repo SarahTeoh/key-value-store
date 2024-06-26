@@ -9,6 +9,12 @@ beforeEach(function () {
     $this->service = new KeyValueService($this->mockRepository);
 });
 
+it('can store a key-value pair', function () {
+    $this->mockRepository->shouldReceive('store')->once()->with('test_key', 'test_value', Mockery::type('int'));
+
+    $this->service->store('test_key', 'test_value');
+});
+
 it('can get the latest value for a key', function () {
     $this->mockRepository->shouldReceive('getKeyLatest')->once()->with('test_key')->andReturn('latest_value');
 

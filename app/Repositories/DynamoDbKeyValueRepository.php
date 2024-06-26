@@ -11,6 +11,15 @@ class DynamoDbKeyValueRepository implements KeyValueRepositoryInterface
 {
     public function __construct(private KeyValue $model) {}
 
+    public function store(string $key, string $value, int $timestamp)
+    {
+        return $this->model->create([
+            'key' => $key,
+            'timestamp' => $timestamp,
+            'value' => $value,
+        ]);
+    }
+
     public function getKeyLatest(string $key)
     {
         // @phpstan-ignore-next-line

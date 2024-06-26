@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreKeyValueRequest;
 use App\Http\Resources\KeyValueResource;
 use App\Interfaces\KeyValueServiceInterface;
 use Illuminate\Http\Request;
@@ -20,6 +21,17 @@ class KeyValueController extends Controller
         $data = $this->keyValueService->getAll();
 
         return KeyValueResource::collection($data);
+    }
+
+    /**
+     * Store key-value pair
+     */
+    public function store(StoreKeyValueRequest $request): KeyValueResource
+    {
+        $validated = $request->validated();
+        $data = $this->keyValueService->store(...$validated);
+
+        return new KeyValueResource($data);
     }
 
     /**

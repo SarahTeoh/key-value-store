@@ -11,6 +11,16 @@ beforeEach(function () {
     $this->repository = new DynamoDbKeyValueRepository($this->mockModel);
 });
 
+it('can store a key-value pair', function () {
+    $this->mockModel->shouldReceive('create')->once()->with([
+        'key' => 'test_key',
+        'value' => 'test_value',
+        'timestamp' => 1231244,
+    ]);
+
+    $this->repository->store('test_key', 'test_value', 1231244);
+});
+
 it('can get the latest value for a key', function () {
     $mockedKeyValue = new KeyValue(['key' => 'test_key', 'value' => 'latest_value']);
 

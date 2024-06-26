@@ -36,6 +36,21 @@ it('can fetch all key-value pairs', function () {
         ]);
 });
 
+it('can store a key-value pair', function () {
+    $response = $this->postJson('/api/v1/object', [
+        'mykey' => 'myvalue',
+    ]);
+
+    $response->assertStatus(200)
+        ->assertJson([
+            'data' => [
+                'key' => 'mykey',
+                'value' => 'myvalue',
+                'timestamp' => now()->timestamp,
+            ],
+        ]);
+});
+
 it('can fetch the latest value for a key', function () {
     $response = $this->get('/api/v1/object/mykey');
 

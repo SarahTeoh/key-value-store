@@ -51,7 +51,7 @@ it('can fetch the latest value for a key', function () {
 it('can fetch the value for a key at a specific timestamp', function () {
     $timestamp = 1625236523;
 
-    $response = $this->get('/api/v1/object/mykey?timestamp=' . $timestamp);
+    $response = $this->get('/api/v1/object/mykey?timestamp='.$timestamp);
 
     $response->assertStatus(200)
         ->assertJson([

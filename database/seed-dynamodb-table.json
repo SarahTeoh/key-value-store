@@ -1,0 +1,175 @@
+{
+    "KeyValueStore": [
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key1"},
+            "timestamp": {"N": "1656134400"},
+            "value": {"S": "example text content of key 1."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key2"},
+            "timestamp": {"N": "1656138000"},
+            "value": {"S": "example text content of key 2."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key3"},
+            "timestamp": {"N": "1656220800"},
+            "value": {"S": "example text content of key 3."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key4"},
+            "timestamp": {"N": "1656224400"},
+            "value": {"S": "{ \"data1\": \"key4 value1\", \"data2\": 5, \"data3\": true }"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key5"},
+            "timestamp": {"N": "1656307200"},
+            "value": {"S": "example text content of key 5."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key6"},
+            "timestamp": {"N": "1656310800"},
+            "value": {"S": "example text content of key 6."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key7"},
+            "timestamp": {"N": "1656397200"},
+            "value": {"S": "example text content of key 7."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key8"},
+            "timestamp": {"N": "1656393600"},
+            "value": {"S": "{ \"data1\": \"key8 value1\", \"data2\": 5, \"data3\": true }"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key9"},
+            "timestamp": {"N": "1656480000"},
+            "value": {"S": "{ \"data1\": \"key 9 value1\", \"data2\": 5, \"data3\": true }"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key10"},
+            "timestamp": {"N": "1656483600"},
+            "value": {"S": "example text content of key 10."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key11"},
+            "timestamp": {"N": "1656566400"},
+            "value": {"S": "example text content of key 11."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key12"},
+            "timestamp": {"N": "1656570000"},
+            "value": {"S": "example text content of key 12."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key13"},
+            "timestamp": {"N": "1656652800"},
+            "value": {"S": "{ \"nested_key\": \"nested_value for key 13\", \"array_data\": [1, 2, 3] }"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key15"},
+            "timestamp": {"N": "1656656460"},
+            "value": {"S": "{ \"nested_key\": \"nested_value for key 14\", \"array_data\": [1, 2, 3] }"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key16"},
+            "timestamp": {"N": "1656656450"},
+            "value": {"S": "{ \"nested_key\": \"nested_value for key 16\", \"array_data\": [1, 2, 3] }"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key17"},
+            "timestamp": {"N": "1656570800"},
+            "value": {"S": "example text content of key 17."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key18"},
+            "timestamp": {"N": "1656656430"},
+            "value": {"S": "{ \"nested_key\": \"nested_value for key 18\", \"array_data\": [1, 2, 3] }"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key19"},
+            "timestamp": {"N": "1656570811"},
+            "value": {"S": "example text content of key 19."}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "key": {"S": "key20"},
+            "timestamp": {"N": "1656570800"},
+            "value": {"S": "example text content of key 20."}
+          }
+        }
+      }
+    ]
+}

@@ -1,12 +1,10 @@
 ****
 # Version-controlled Key Value Store API
-This is an API that can be used to query a version-controlled key value store. You can try out the API by clicking the "Run in Postman" button below.
-
-[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/9636334-7890a2b0-48a0-4515-b21e-11c8c4ffb615?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D9636334-7890a2b0-48a0-4515-b21e-11c8c4ffb615%26entityType%3Dcollection%26workspaceId%3D06c6778a-a3f4-4204-a7f0-dd9b9d3c5694)
-
+This is an API that can be used to query a version-controlled key value store.
+I've delete it from the cloud so this API is currently unavailable. Please contact me if you want to use and test this API in production.
 
 ### API endpoints
-Base path: http://key-value-store.ap-southeast-1.elasticbeanstalk.com/api/v1
+(Temporarily unavailable)Base path: http://key-value-store.ap-southeast-1.elasticbeanstalk.com/api/v1
 <table>
 <thead>
 <tr>
